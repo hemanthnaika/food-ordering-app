@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "Sentry": {
+      "url": "https://mcp.sentry.dev/mcp/hemanth-00/react_native_food-ordering",
+      "type": "http"
+    }
+  }
+}
