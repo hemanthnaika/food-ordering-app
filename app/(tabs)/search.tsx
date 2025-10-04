@@ -1,6 +1,8 @@
 import CartButton from "@/components/CartButton";
+import Filter from "@/components/Filter";
 import MenuCard from "@/components/MenuCard";
-import { getMenu } from "@/lib/appwrite";
+import SearchBar from "@/components/SearchBar";
+import { getCategories, getMenu } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import { MenuItem } from "@/type";
 import cn from "clsx";
@@ -14,10 +16,14 @@ const Search = () => {
     query: string;
     category: string;
   }>();
+
   const { data, refetch, loading } = useAppwrite({
     fn: getMenu,
     params: { category, query, limit: 6 },
   });
+
+  const { data: categories } = useAppwrite({ fn: getCategories });
+
   useEffect(() => {
     refetch({ category, query, limit: 6 });
   });
@@ -61,9 +67,9 @@ const Search = () => {
               <CartButton />
             </View>
 
-            {/* <SearchBar />
+            <SearchBar />
 
-            <Filter categories={categories!} /> */}
+            <Filter categories={categories!} />
           </View>
         )}
         ListEmptyComponent={() => !loading && <Text>No results</Text>}
