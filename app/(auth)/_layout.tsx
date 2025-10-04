@@ -17,7 +17,7 @@ export default function AuthLayout() {
   if (isAuthenticated) return <Redirect href="/" />;
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "android" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
         className="bg-white h-full"
